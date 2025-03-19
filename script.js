@@ -6,13 +6,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
+console.log("Attempting to load data.geojson...");
+
+
 // Load GeoJSON data
 fetch('data.geojson')
-    .then(response => response.json())
-    .then(data => {
-        processGeoJSON(data);
+    .then(response => {
+        if (!response.ok) throw new Error("Network response was not ok");
+        return response.json();
     })
-    .catch(error => console.error('Error loading GeoJSON data:', error));
+    .then(data => console.log("GeoJSON loaded successfully:", data))
+    .catch(error => console.error("Error loading GeoJSON:", error));
 
 // Function to process and display GeoJSON data
 var cityLayer;
