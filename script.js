@@ -20,7 +20,7 @@ function processGeoJSON(data) {
     cityLayer = L.geoJSON(data, {
         pointToLayer: function(feature, latlng) {
             return L.circleMarker(latlng, {
-                radius: getRadius(feature.properties.populations[1970]), // Default to 1970
+                radius: getRadius(feature.properties.populations[String(currentYear)]), 
                 fillColor: "blue",
                 color: "#000",
                 weight: 1,
@@ -62,7 +62,7 @@ function updateMap() {
             cityLayer = L.geoJSON(data, {
                 pointToLayer: function(feature, latlng) {
                     return L.circleMarker(latlng, {
-                        radius: getRadius(feature.properties.populations[currentYear]),
+                        radius: getRadius(feature.properties.populations[String(currentYear)]),
                         fillColor: "blue",
                         color: "#000",
                         weight: 1,
@@ -71,9 +71,10 @@ function updateMap() {
                 },
                 onEachFeature: function(feature, layer) {
                     layer.bindPopup(`<b>${feature.properties.city}, ${feature.properties.country}</b><br>
-                                     Population (${currentYear}): ${feature.properties.populations[currentYear].toLocaleString()}`);
+                                     Population (${currentYear}): ${feature.properties.populations[String(currentYear)].toLocaleString()}`);
                 }
             }).addTo(map);
         })
         .catch(error => console.error('Error updating map:', error));
 }
+
