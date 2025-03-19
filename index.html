@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World's Largest Cities - Population Over Time</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Load D3 for data handling -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+</head>
+<body>
+    <h1>Population Growth of the World's Largest Cities (1970-2020)</h1>
+    <p>Use the time slider to explore how city populations have changed over time.</p>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <!-- Time Slider -->
+    <div id="slider-container">
+        <input type="range" id="time-slider" min="1970" max="2020" step="10" value="1970">
+        <span id="year-label">1970</span>
+    </div>
+
+    <!-- Leaflet JS Script -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+
